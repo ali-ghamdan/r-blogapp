@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: #F5EBE0;
+  --forms-background-color: #EDEDE9;
+  --boxes-background-color: #E3D5CA;
+  --color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* :root {
+    --background-color: black;
+    --color: white;
+  } */
+}
+
+body {
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--color);
+  font-family: "JetBrains Mono", "Fira Code",sans-serif;
+}

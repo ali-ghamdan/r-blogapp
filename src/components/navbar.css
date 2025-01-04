@@ -1,0 +1,100 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white;
+  box-shadow: black 0px 0px 5px;
+  position: sticky;
+}
+
+
+.search-bar input {
+  border: 2px gray solid;
+  border-radius: 5px;
+  padding: 8px;
+  background-color: white;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.profile button {
+  padding: 8px;
+  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bolder;
+  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, .5); */
+}
+
+
+.profile-dialog {
+  position: relative;
+  inset: 0.5rem;
+  margin: 25px 65px 0 auto;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, .5);
+  border-top-right-radius: 0;
+  width: 200px;
+  /* height: 170px; */
+  padding: 15px;
+  padding-left: 10px;
+  overflow-x: hidden;
+}
+
+.profile-dialog::backdrop {
+  background-color: transparent;
+}
+
+.profile-header {
+  display: flex;
+  font-size: smaller;
+  align-items: center;
+}
+.profile-header div {
+  margin-left: 10px;
+  margin-top: auto
+}
+
+.profile-stats {
+  font-size: 10px;
+}
+
+.profile-stats div {
+  margin: 1px 0;
+}
+
+dialog > hr {
+  margin: 0 5px;
+  border-width: 2px;
+}
+
+dialog ul, dialog ul li {
+  margin: 3px 0px;
+  padding: 0;
+  list-style: none;
+}
+dialog ul li {
+  padding: 3px;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+dialog ul li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+dialog ul li:last-child {
+  color: red;
+  font-weight: bold;
+}
+
+dialog ul li:last-child:hover {
+  color: rgb(187, 0, 0)
+}

@@ -1,0 +1,75 @@
+
+.auth-section {
+  display: flex;
+  justify-content: flex-start;
+  height: 100vh;
+}
+
+.auth-section > .item:first-child {
+  align-self: center;
+  width: 700px;
+}
+
+.auth-section .item1 h2 {
+  text-align: center;
+  padding-left: 30px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.auth-section .item1 {
+  align-self: center;
+  margin: 60px;
+  background-color: var(--forms-background-color);
+  box-shadow: black 3px 10px 15px;
+  border-radius: 5px;
+  padding: 10px 40px ;
+}
+
+
+.auth-section .item1 form label, .auth-section .item1 form input {
+  display: block;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.auth-section .item1 form label {
+  transform: translateY(10px) translateX(-3px);
+  font-size: smaller;
+}
+
+.auth-section .item1 form input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 0.5px solid black;
+  background-color: var(--forms-background-color);
+}
+
+.auth-section .item1 form input:focus {
+  outline: none;
+}
+
+
+.auth-section .item1 button[type=submit] {
+  margin-bottom: 10px;
+  padding: 10px 0;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--boxes-background-color);
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: bold;
+  transform: translateX(5px) translateY(10px);
+  cursor: pointer;
+}
+
+.auth-section .item2 {
+  background-image: url("https://www.cem.org/hubfs/blog/Blog-10-essential-reads-to-improve-reading-comprehension.jpg");
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: right;
+}
+
+
+

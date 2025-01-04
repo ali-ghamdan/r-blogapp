@@ -1,0 +1,79 @@
+#post-content {
+  display: flex;
+  justify-content: center;
+}
+
+.user-info {
+  display: flex;
+}
+
+.user-info > div {
+  margin-left: 10px;
+}
+
+.user-data {
+  border: 1px solid rgba(0, 0, 0, .5);
+  padding: 0 4.5px;
+  border-radius: 5px;
+}
+
+/* #post-content > hr {
+  margin: 20px 0;
+} */
+
+.post-content {
+  border: 1px solid rgba(0, 0, 0, .5);
+  padding: 20px;
+}
+
+.create-comment-input {
+  display: block;
+  padding: 5px;
+  width: 100%;
+  
+}
+
+.create-comment-input + button[type=submit] {
+  width: calc(100% - 8px);
+  margin: 2px 4px;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, .5);
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.create-comment-form {
+  margin: 5px;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 7px;
+}
+
+.comments .pagination-container {
+  justify-content: center;
+}
+
+.comments .comment-head {
+  display: flex;
+}
+.comments .comment {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 7px;
+}
+
+.comment img {
+  width: 32px;
+  height: auto;
+}
+
+.comment sup {
+  margin-left: 10px;
+  margin-top: 6px;
+}
+
+.c-content {
+  margin-left: 5px;
+  font-size: small;
+}
