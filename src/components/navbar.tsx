@@ -1,4 +1,4 @@
-import { MouseEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, MouseEvent, useEffect, useState } from "react";
 import "./navbar.css";
 import dialogCloser from "../lib/dialogCloser";
 import Avatar from "./avatar";
@@ -26,6 +26,14 @@ export default function Navbar() {
   const [postsCount, setPostsCount] = useState(0);
   const [followersCount, setFollowersCount] = useState(0);
   const [followingCount, setFollowingCount] = useState(0);
+
+  const handleSearching = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const q = (
+      e.currentTarget.querySelector('input[name="q"]') as HTMLInputElement
+    )?.value;
+    if (q) location.href = `/search?q=${q}`;
+  };
 
   const updateProfileData = ({
     avt,
@@ -189,7 +197,17 @@ export default function Navbar() {
     <>
       <nav>
         <div className="search-bar">
-          <input type="text" placeholder="🔎 Search for Posts" />
+          <form onSubmit={handleSearching}>
+            <input
+              name="q"
+              type="text"
+              placeholder="🔎 Search for Posts"
+              required
+            />
+            <button type="submit" id="s-s-button">
+              🔎
+            </button>
+          </form>
         </div>
         <div>
           <div className="profile">

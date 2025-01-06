@@ -6,6 +6,7 @@ import HomePage from "./pages/homePage";
 import Notification from "./components/notification";
 import PostPage from "./pages/postPage";
 import NotFound from "./components/notFound";
+import ListPosts from "./components/listPosts";
 
 function App() {
   const { auth } = authStore();
@@ -17,11 +18,17 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={auth ? <HomePage type="HOME" /> : <Navigate to="/login" />}
+            element={auth ? <HomePage /> : <Navigate to="/login" />}
           />
           <Route
             path="/post/:id"
             element={auth ? <PostPage /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/search"
+            element={
+              auth ? <ListPosts type="SEARCH" /> : <Navigate to="/login" />
+            }
           />
           <Route path="/login" element={<LoginPage isRegister={false} />} />
           <Route path="/register" element={<LoginPage isRegister={true} />} />
