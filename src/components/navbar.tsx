@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, MouseEvent, useEffect, useState } from "react";
+import { FormEvent, MouseEvent, useEffect, useState } from "react";
 import "./navbar.css";
 import dialogCloser from "../lib/dialogCloser";
 import Avatar from "./avatar";
@@ -198,6 +198,15 @@ export default function Navbar() {
       <nav>
         <div className="search-bar">
           <form onSubmit={handleSearching}>
+            {location.pathname !== "/" && (
+              <div
+                title="back to home?"
+                className="home-icon"
+                onClick={() => navigate("/")}
+              >
+                🏠
+              </div>
+            )}
             <input
               name="q"
               type="text"

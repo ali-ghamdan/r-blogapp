@@ -1,0 +1,38 @@
+.post-card {
+  max-width: 500px;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 5px black;
+  cursor: pointer;
+  transition: 250ms;
+  user-select: none;
+}
+
+.post-card:hover {
+  background-color: aliceblue;
+  transform: scale(1.01);
+}
+
+.post-card:active {
+  background-color: antiquewhite;
+  transform: scale(1.01);
+}
+
+
+.post-author {
+  display: flex;
+  max-width: 80px;
+  align-items: center;
+}
+
+.post-details {
+  display: flex;
+  justify-content: space-between  ;
+}
+
+.post-author img {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}

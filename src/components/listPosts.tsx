@@ -5,6 +5,8 @@ import Loading from "../components/loading";
 import Navbar from "../components/navbar";
 import { authStore, notificationsStore } from "../lib/stores";
 import "./listPosts.css";
+import PostCard from "./postCard";
+import { PostCardData } from "../lib/types";
 
 export default function ListPosts({
   type,
@@ -87,32 +89,11 @@ export default function ListPosts({
           <h4>Actually there is 0 post in this page.</h4>
         ) : (
           <>
-            <table>
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th>Comments</th>
-                  <th>Likes</th>
-                </tr>
-              </thead>
-              <tbody>
-                {posts.map((p) => {
-                  return (
-                    <tr key={p.id}>
-                      <td>
-                        <a href={`/post/${p.id}`}>{p.title}</a>
-                      </td>
-                      <td>
-                        {p.poster.username} ({p.poster.postsCount} Post)
-                      </td>
-                      <td>{p.commentsCount}</td>
-                      <td>{p.likes}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            <div className="posts-show">
+              {posts.map((post: PostCardData) => {
+                return <PostCard {...post} />;
+              })}
+            </div>
             <div className="pagination-container">
               <button
                 onClick={(e) => {
