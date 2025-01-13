@@ -81,7 +81,7 @@ export default function CreateNewPost() {
           <br />
           <textarea
             onChange={(e) => setContent(e.target.value)}
-            placeholder="this is a test (you can use: any document-editor component from npm), so you can use html freely"
+            placeholder="this is a test so you can use html freely, and you can't delete or update the post anytime."
             required
           ></textarea>
         </div>

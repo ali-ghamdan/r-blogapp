@@ -1,4 +1,4 @@
-import { FormEvent, MouseEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { authStore, notificationsStore } from "../lib/stores";
 import Avatar from "../components/avatar";
@@ -7,6 +7,7 @@ import "./postPage.css";
 import Loading from "../components/loading";
 import Navbar from "../components/navbar";
 import Dialoger from "../components/dialoger";
+import CommentCard from "../components/commentCard";
 
 export default function PostPage() {
   const navigate = useNavigate();
@@ -23,81 +24,6 @@ export default function PostPage() {
     undefined
   );
   const [editComment, setEditComment] = useState("");
-
-  const handleToogleCommentTools = (e: MouseEvent, comment: any) => {
-    const tool = document.querySelector<HTMLDivElement>(
-      `#comment-${comment.id}`
-    );
-    if (tool) {
-      tool.classList.toggle("opened");
-    }
-  };
-
-  const handleEditComment = (
-    commentId: string,
-    index: number,
-    del?: boolean
-  ) => {
-    const comment = comments?.[index];
-    var body: any;
-    const modifiedContent = document.querySelector<HTMLTextAreaElement>(
-      `#comment-content-${commentId}`
-    );
-    if (!del) {
-      if (!comment || !modifiedContent)
-        return sendNotification({
-          title: "Comment Not Found",
-          type: "ERROR",
-          message: "couldn't find the comment.",
-        });
-      if (modifiedContent.value === comment.content) {
-        setEditComment("");
-        sendNotification({
-          type: "WARN",
-          title: "Won't Update Comment",
-          message: "writing the same content will not work",
-        });
-        return;
-      }
-      body = {
-        content: modifiedContent.value,
-      };
-    }
-    fetch(`http://localhost:3001/posts/${postId}/comments/${commentId}`, {
-      method: del ? "DELETE" : "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: auth!,
-      },
-      body: JSON.stringify(body),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setEditComment("");
-          const c = [...comments!];
-          if (del) {
-            c.splice(index, 1);
-          } else {
-            c[index].content = modifiedContent?.value;
-          }
-          setComments(c);
-          sendNotification({
-            type: "SUCCESS",
-            title: "Modified Successfully",
-            message: "you got changes the changes.",
-          });
-        } else {
-          console.error(data);
-          sendNotification({
-            type: "ERROR",
-            title: "failed to edit/delete comment",
-            message: "see console for more details",
-            ...data,
-          });
-        }
-      });
-  };
 
   const handleCreateComment = (e: FormEvent) => {
     e.preventDefault();
@@ -238,81 +164,15 @@ export default function PostPage() {
                   <div>
                     {comments.map((c, index) => {
                       return (
-                        <div className="comment">
-                          <div className="comment-head">
-                            <Avatar
-                              url={c?.commenter?.avatar}
-                              fallback={UserNameShorthand(
-                                c?.commenter?.username
-                              )}
-                            />
-                            <sup>{c?.commenter?.username}</sup>
-                            <div className="more-expand">
-                              <div className="expand-info">
-                                <div
-                                  className="comment-info"
-                                  onClick={(e) =>
-                                    handleToogleCommentTools(e, c)
-                                  }
-                                >
-                                  i
-                                </div>
-                                <div
-                                  className="info-dialog"
-                                  id={`comment-${c.id}`}
-                                >
-                                  <div className="ctool-heart">
-                                    {c.likesCount} likes
-                                  </div>
-                                  {c.isCommenter && (
-                                    <>
-                                      <hr />
-                                      <div
-                                        className="ctool-edit"
-                                        onClick={() => {
-                                          if (editComment === c.id) {
-                                            handleEditComment(c.id, index);
-                                          } else {
-                                            setEditComment(c.id);
-                                          }
-                                        }}
-                                      >
-                                        {editComment === c.id
-                                          ? "Confirm Edits?"
-                                          : "Edit"}
-                                      </div>
-                                      <hr />
-                                      <div
-                                        className="ctool-remove"
-                                        onClick={() => {
-                                          handleEditComment(c.id, index, true);
-                                        }}
-                                      >
-                                        Remove
-                                      </div>
-                                    </>
-                                  )}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div>
-                            {editComment === c.id ? (
-                              <textarea
-                                className="c-content edit"
-                                id={`comment-content-${c.id}`}
-                                defaultValue={c?.content}
-                              ></textarea>
-                            ) : (
-                              <div
-                                className="c-content"
-                                id={`c-content-${c.id}`}
-                              >
-                                {c?.content}
-                              </div>
-                            )}
-                          </div>
-                        </div>
+                        <CommentCard
+                          comment={c}
+                          comments={comments}
+                          editComment={editComment}
+                          index={index}
+                          postId={postId}
+                          setComments={setComments}
+                          setEditComment={setEditComment}
+                        />
                       );
                     })}
                   </div>

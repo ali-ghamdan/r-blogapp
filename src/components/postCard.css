@@ -7,18 +7,12 @@
   cursor: pointer;
   transition: 250ms;
   user-select: none;
+  position: relative;
 }
 
 .post-card:hover {
   background-color: aliceblue;
-  transform: scale(1.01);
 }
-
-.post-card:active {
-  background-color: antiquewhite;
-  transform: scale(1.01);
-}
-
 
 .post-author {
   display: flex;
@@ -28,7 +22,7 @@
 
 .post-details {
   display: flex;
-  justify-content: space-between  ;
+  justify-content: space-between;
 }
 
 .post-author img {
